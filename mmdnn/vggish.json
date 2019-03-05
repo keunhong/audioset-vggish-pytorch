@@ -1,0 +1,1379 @@
+{
+  "node": [
+    {
+      "name": "vggish/input_features",
+      "attr": {
+        "dtype": {
+          "type": "DT_FLOAT32"
+        },
+        "shape": {
+          "shape": {
+            "dim": [
+              {
+                "size": "-1"
+              },
+              {
+                "size": "96"
+              },
+              {
+                "size": "64"
+              }
+            ]
+          }
+        },
+        "_output_shapes": {
+          "list": {
+            "shape": [
+              {
+                "dim": [
+                  {
+                    "size": "-1"
+                  },
+                  {
+                    "size": "96"
+                  },
+                  {
+                    "size": "64"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "op": "DataInput"
+    },
+    {
+      "name": "vggish/Reshape",
+      "attr": {
+        "shape": {
+          "list": {
+            "i": [
+              "-1",
+              "96",
+              "64",
+              "1"
+            ]
+          }
+        },
+        "_output_shapes": {
+          "list": {
+            "shape": [
+              {
+                "dim": [
+                  {
+                    "size": "-1"
+                  },
+                  {
+                    "size": "96"
+                  },
+                  {
+                    "size": "64"
+                  },
+                  {
+                    "size": "1"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "op": "Reshape",
+      "input": [
+        "vggish/input_features"
+      ]
+    },
+    {
+      "name": "vggish/conv1/Conv2D",
+      "attr": {
+        "use_bias": {
+          "b": true
+        },
+        "data_format": {
+          "s": "TkhXQw=="
+        },
+        "_output_shapes": {
+          "list": {
+            "shape": [
+              {
+                "dim": [
+                  {
+                    "size": "-1"
+                  },
+                  {
+                    "size": "96"
+                  },
+                  {
+                    "size": "64"
+                  },
+                  {
+                    "size": "64"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "auto_pad": {
+          "s": "U0FNRV9VUFBFUg=="
+        },
+        "pads": {
+          "list": {
+            "i": [
+              "0",
+              "1",
+              "1",
+              "0",
+              "0",
+              "1",
+              "1",
+              "0"
+            ]
+          }
+        },
+        "kernel_shape": {
+          "list": {
+            "i": [
+              "3",
+              "3",
+              "1",
+              "64"
+            ]
+          }
+        },
+        "strides": {
+          "list": {
+            "i": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        }
+      },
+      "op": "Conv",
+      "input": [
+        "vggish/Reshape"
+      ]
+    },
+    {
+      "name": "vggish/conv1/Relu",
+      "attr": {
+        "_output_shapes": {
+          "list": {
+            "shape": [
+              {
+                "dim": [
+                  {
+                    "size": "-1"
+                  },
+                  {
+                    "size": "96"
+                  },
+                  {
+                    "size": "64"
+                  },
+                  {
+                    "size": "64"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "op": "Relu",
+      "input": [
+        "vggish/conv1/Conv2D"
+      ]
+    },
+    {
+      "name": "vggish/pool1/MaxPool",
+      "attr": {
+        "pooling_type": {
+          "s": "TUFY"
+        },
+        "_output_shapes": {
+          "list": {
+            "shape": [
+              {
+                "dim": [
+                  {
+                    "size": "-1"
+                  },
+                  {
+                    "size": "48"
+                  },
+                  {
+                    "size": "32"
+                  },
+                  {
+                    "size": "64"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "auto_pad": {
+          "s": "U0FNRV9VUFBFUg=="
+        },
+        "pads": {
+          "list": {
+            "i": [
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0"
+            ]
+          }
+        },
+        "kernel_shape": {
+          "list": {
+            "i": [
+              "1",
+              "2",
+              "2",
+              "1"
+            ]
+          }
+        },
+        "strides": {
+          "list": {
+            "i": [
+              "1",
+              "2",
+              "2",
+              "1"
+            ]
+          }
+        },
+        "data_format": {
+          "s": "TkhXQw=="
+        }
+      },
+      "op": "Pool",
+      "input": [
+        "vggish/conv1/Relu"
+      ]
+    },
+    {
+      "name": "vggish/conv2/Conv2D",
+      "attr": {
+        "use_bias": {
+          "b": true
+        },
+        "data_format": {
+          "s": "TkhXQw=="
+        },
+        "_output_shapes": {
+          "list": {
+            "shape": [
+              {
+                "dim": [
+                  {
+                    "size": "-1"
+                  },
+                  {
+                    "size": "48"
+                  },
+                  {
+                    "size": "32"
+                  },
+                  {
+                    "size": "128"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "auto_pad": {
+          "s": "U0FNRV9VUFBFUg=="
+        },
+        "pads": {
+          "list": {
+            "i": [
+              "0",
+              "1",
+              "1",
+              "0",
+              "0",
+              "1",
+              "1",
+              "0"
+            ]
+          }
+        },
+        "kernel_shape": {
+          "list": {
+            "i": [
+              "3",
+              "3",
+              "64",
+              "128"
+            ]
+          }
+        },
+        "strides": {
+          "list": {
+            "i": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        }
+      },
+      "op": "Conv",
+      "input": [
+        "vggish/pool1/MaxPool"
+      ]
+    },
+    {
+      "name": "vggish/conv2/Relu",
+      "attr": {
+        "_output_shapes": {
+          "list": {
+            "shape": [
+              {
+                "dim": [
+                  {
+                    "size": "-1"
+                  },
+                  {
+                    "size": "48"
+                  },
+                  {
+                    "size": "32"
+                  },
+                  {
+                    "size": "128"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "op": "Relu",
+      "input": [
+        "vggish/conv2/Conv2D"
+      ]
+    },
+    {
+      "name": "vggish/pool2/MaxPool",
+      "attr": {
+        "pooling_type": {
+          "s": "TUFY"
+        },
+        "_output_shapes": {
+          "list": {
+            "shape": [
+              {
+                "dim": [
+                  {
+                    "size": "-1"
+                  },
+                  {
+                    "size": "24"
+                  },
+                  {
+                    "size": "16"
+                  },
+                  {
+                    "size": "128"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "auto_pad": {
+          "s": "U0FNRV9VUFBFUg=="
+        },
+        "pads": {
+          "list": {
+            "i": [
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0"
+            ]
+          }
+        },
+        "kernel_shape": {
+          "list": {
+            "i": [
+              "1",
+              "2",
+              "2",
+              "1"
+            ]
+          }
+        },
+        "data_format": {
+          "s": "TkhXQw=="
+        },
+        "strides": {
+          "list": {
+            "i": [
+              "1",
+              "2",
+              "2",
+              "1"
+            ]
+          }
+        }
+      },
+      "op": "Pool",
+      "input": [
+        "vggish/conv2/Relu"
+      ]
+    },
+    {
+      "name": "vggish/conv3/conv3_1/Conv2D",
+      "attr": {
+        "use_bias": {
+          "b": true
+        },
+        "data_format": {
+          "s": "TkhXQw=="
+        },
+        "_output_shapes": {
+          "list": {
+            "shape": [
+              {
+                "dim": [
+                  {
+                    "size": "-1"
+                  },
+                  {
+                    "size": "24"
+                  },
+                  {
+                    "size": "16"
+                  },
+                  {
+                    "size": "256"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "auto_pad": {
+          "s": "U0FNRV9VUFBFUg=="
+        },
+        "pads": {
+          "list": {
+            "i": [
+              "0",
+              "1",
+              "1",
+              "0",
+              "0",
+              "1",
+              "1",
+              "0"
+            ]
+          }
+        },
+        "kernel_shape": {
+          "list": {
+            "i": [
+              "3",
+              "3",
+              "128",
+              "256"
+            ]
+          }
+        },
+        "strides": {
+          "list": {
+            "i": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        }
+      },
+      "op": "Conv",
+      "input": [
+        "vggish/pool2/MaxPool"
+      ]
+    },
+    {
+      "name": "vggish/conv3/conv3_1/Relu",
+      "attr": {
+        "_output_shapes": {
+          "list": {
+            "shape": [
+              {
+                "dim": [
+                  {
+                    "size": "-1"
+                  },
+                  {
+                    "size": "24"
+                  },
+                  {
+                    "size": "16"
+                  },
+                  {
+                    "size": "256"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "op": "Relu",
+      "input": [
+        "vggish/conv3/conv3_1/Conv2D"
+      ]
+    },
+    {
+      "name": "vggish/conv3/conv3_2/Conv2D",
+      "attr": {
+        "use_bias": {
+          "b": true
+        },
+        "data_format": {
+          "s": "TkhXQw=="
+        },
+        "_output_shapes": {
+          "list": {
+            "shape": [
+              {
+                "dim": [
+                  {
+                    "size": "-1"
+                  },
+                  {
+                    "size": "24"
+                  },
+                  {
+                    "size": "16"
+                  },
+                  {
+                    "size": "256"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "auto_pad": {
+          "s": "U0FNRV9VUFBFUg=="
+        },
+        "pads": {
+          "list": {
+            "i": [
+              "0",
+              "1",
+              "1",
+              "0",
+              "0",
+              "1",
+              "1",
+              "0"
+            ]
+          }
+        },
+        "kernel_shape": {
+          "list": {
+            "i": [
+              "3",
+              "3",
+              "256",
+              "256"
+            ]
+          }
+        },
+        "strides": {
+          "list": {
+            "i": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        }
+      },
+      "op": "Conv",
+      "input": [
+        "vggish/conv3/conv3_1/Relu"
+      ]
+    },
+    {
+      "name": "vggish/conv3/conv3_2/Relu",
+      "attr": {
+        "_output_shapes": {
+          "list": {
+            "shape": [
+              {
+                "dim": [
+                  {
+                    "size": "-1"
+                  },
+                  {
+                    "size": "24"
+                  },
+                  {
+                    "size": "16"
+                  },
+                  {
+                    "size": "256"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "op": "Relu",
+      "input": [
+        "vggish/conv3/conv3_2/Conv2D"
+      ]
+    },
+    {
+      "name": "vggish/pool3/MaxPool",
+      "attr": {
+        "pooling_type": {
+          "s": "TUFY"
+        },
+        "_output_shapes": {
+          "list": {
+            "shape": [
+              {
+                "dim": [
+                  {
+                    "size": "-1"
+                  },
+                  {
+                    "size": "12"
+                  },
+                  {
+                    "size": "8"
+                  },
+                  {
+                    "size": "256"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "auto_pad": {
+          "s": "U0FNRV9VUFBFUg=="
+        },
+        "pads": {
+          "list": {
+            "i": [
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0"
+            ]
+          }
+        },
+        "kernel_shape": {
+          "list": {
+            "i": [
+              "1",
+              "2",
+              "2",
+              "1"
+            ]
+          }
+        },
+        "strides": {
+          "list": {
+            "i": [
+              "1",
+              "2",
+              "2",
+              "1"
+            ]
+          }
+        },
+        "data_format": {
+          "s": "TkhXQw=="
+        }
+      },
+      "op": "Pool",
+      "input": [
+        "vggish/conv3/conv3_2/Relu"
+      ]
+    },
+    {
+      "name": "vggish/conv4/conv4_1/Conv2D",
+      "attr": {
+        "use_bias": {
+          "b": true
+        },
+        "data_format": {
+          "s": "TkhXQw=="
+        },
+        "_output_shapes": {
+          "list": {
+            "shape": [
+              {
+                "dim": [
+                  {
+                    "size": "-1"
+                  },
+                  {
+                    "size": "12"
+                  },
+                  {
+                    "size": "8"
+                  },
+                  {
+                    "size": "512"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "auto_pad": {
+          "s": "U0FNRV9VUFBFUg=="
+        },
+        "pads": {
+          "list": {
+            "i": [
+              "0",
+              "1",
+              "1",
+              "0",
+              "0",
+              "1",
+              "1",
+              "0"
+            ]
+          }
+        },
+        "kernel_shape": {
+          "list": {
+            "i": [
+              "3",
+              "3",
+              "256",
+              "512"
+            ]
+          }
+        },
+        "strides": {
+          "list": {
+            "i": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        }
+      },
+      "op": "Conv",
+      "input": [
+        "vggish/pool3/MaxPool"
+      ]
+    },
+    {
+      "name": "vggish/conv4/conv4_1/Relu",
+      "attr": {
+        "_output_shapes": {
+          "list": {
+            "shape": [
+              {
+                "dim": [
+                  {
+                    "size": "-1"
+                  },
+                  {
+                    "size": "12"
+                  },
+                  {
+                    "size": "8"
+                  },
+                  {
+                    "size": "512"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "op": "Relu",
+      "input": [
+        "vggish/conv4/conv4_1/Conv2D"
+      ]
+    },
+    {
+      "name": "vggish/conv4/conv4_2/Conv2D",
+      "attr": {
+        "use_bias": {
+          "b": true
+        },
+        "data_format": {
+          "s": "TkhXQw=="
+        },
+        "_output_shapes": {
+          "list": {
+            "shape": [
+              {
+                "dim": [
+                  {
+                    "size": "-1"
+                  },
+                  {
+                    "size": "12"
+                  },
+                  {
+                    "size": "8"
+                  },
+                  {
+                    "size": "512"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "auto_pad": {
+          "s": "U0FNRV9VUFBFUg=="
+        },
+        "pads": {
+          "list": {
+            "i": [
+              "0",
+              "1",
+              "1",
+              "0",
+              "0",
+              "1",
+              "1",
+              "0"
+            ]
+          }
+        },
+        "kernel_shape": {
+          "list": {
+            "i": [
+              "3",
+              "3",
+              "512",
+              "512"
+            ]
+          }
+        },
+        "strides": {
+          "list": {
+            "i": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        }
+      },
+      "op": "Conv",
+      "input": [
+        "vggish/conv4/conv4_1/Relu"
+      ]
+    },
+    {
+      "name": "vggish/conv4/conv4_2/Relu",
+      "attr": {
+        "_output_shapes": {
+          "list": {
+            "shape": [
+              {
+                "dim": [
+                  {
+                    "size": "-1"
+                  },
+                  {
+                    "size": "12"
+                  },
+                  {
+                    "size": "8"
+                  },
+                  {
+                    "size": "512"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "op": "Relu",
+      "input": [
+        "vggish/conv4/conv4_2/Conv2D"
+      ]
+    },
+    {
+      "name": "vggish/pool4/MaxPool",
+      "attr": {
+        "pooling_type": {
+          "s": "TUFY"
+        },
+        "_output_shapes": {
+          "list": {
+            "shape": [
+              {
+                "dim": [
+                  {
+                    "size": "-1"
+                  },
+                  {
+                    "size": "6"
+                  },
+                  {
+                    "size": "4"
+                  },
+                  {
+                    "size": "512"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "auto_pad": {
+          "s": "U0FNRV9VUFBFUg=="
+        },
+        "pads": {
+          "list": {
+            "i": [
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0"
+            ]
+          }
+        },
+        "kernel_shape": {
+          "list": {
+            "i": [
+              "1",
+              "2",
+              "2",
+              "1"
+            ]
+          }
+        },
+        "strides": {
+          "list": {
+            "i": [
+              "1",
+              "2",
+              "2",
+              "1"
+            ]
+          }
+        },
+        "data_format": {
+          "s": "TkhXQw=="
+        }
+      },
+      "op": "Pool",
+      "input": [
+        "vggish/conv4/conv4_2/Relu"
+      ]
+    },
+    {
+      "name": "vggish/Flatten/flatten/Shape",
+      "attr": {
+        "_output_shapes": {
+          "list": {
+            "shape": [
+              {
+                "dim": [
+                  {
+                    "size": "4"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "op": "Shape",
+      "input": [
+        "vggish/pool4/MaxPool"
+      ]
+    },
+    {
+      "name": "vggish/Flatten/flatten/strided_slice",
+      "attr": {
+        "_output_shapes": {
+          "list": {
+            "shape": [
+              {}
+            ]
+          }
+        },
+        "ends": {
+          "list": {
+            "i": [
+              "1"
+            ]
+          }
+        },
+        "end_mask": {
+          "i": "0"
+        },
+        "begin_mask": {
+          "i": "0"
+        },
+        "strides": {
+          "list": {
+            "i": [
+              "1"
+            ]
+          }
+        },
+        "starts": {
+          "list": {
+            "i": [
+              "0"
+            ]
+          }
+        }
+      },
+      "op": "Slice",
+      "input": [
+        "vggish/Flatten/flatten/Shape"
+      ]
+    },
+    {
+      "name": "vggish/Flatten/flatten/Reshape/shape/1",
+      "attr": {
+        "value": {
+          "i": "-1"
+        },
+        "dtype": {
+          "type": "DT_INT32"
+        },
+        "_output_shapes": {
+          "list": {
+            "shape": [
+              {}
+            ]
+          }
+        }
+      },
+      "op": "Const"
+    },
+    {
+      "name": "vggish/Flatten/flatten/Reshape/shape",
+      "attr": {
+        "axis": {
+          "i": "0"
+        },
+        "_output_shapes": {
+          "list": {
+            "shape": [
+              {
+                "dim": [
+                  {
+                    "size": "2"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "N": {
+          "i": "2"
+        }
+      },
+      "op": "Pack",
+      "input": [
+        "vggish/Flatten/flatten/strided_slice",
+        "vggish/Flatten/flatten/Reshape/shape/1"
+      ]
+    },
+    {
+      "name": "vggish/Flatten/flatten/Reshape",
+      "attr": {
+        "shape": {
+          "list": {
+            "i": [
+              "-1",
+              "12288"
+            ]
+          }
+        },
+        "_output_shapes": {
+          "list": {
+            "shape": [
+              {
+                "dim": [
+                  {
+                    "size": "-1"
+                  },
+                  {
+                    "size": "12288"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "op": "Reshape",
+      "input": [
+        "vggish/pool4/MaxPool"
+      ]
+    },
+    {
+      "name": "vggish/fc1/fc1_1/MatMul",
+      "attr": {
+        "use_bias": {
+          "b": true
+        },
+        "units": {
+          "i": "4096"
+        },
+        "_output_shapes": {
+          "list": {
+            "shape": [
+              {
+                "dim": [
+                  {
+                    "size": "-1"
+                  },
+                  {
+                    "size": "4096"
+                  }
+                ]
+              },
+              {
+                "dim": [
+                  {
+                    "size": "-1"
+                  },
+                  {
+                    "size": "4096"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "op": "FullyConnected",
+      "input": [
+        "vggish/Flatten/flatten/Reshape"
+      ]
+    },
+    {
+      "name": "vggish/fc1/fc1_1/Relu",
+      "attr": {
+        "_output_shapes": {
+          "list": {
+            "shape": [
+              {
+                "dim": [
+                  {
+                    "size": "-1"
+                  },
+                  {
+                    "size": "4096"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "op": "Relu",
+      "input": [
+        "vggish/fc1/fc1_1/MatMul"
+      ]
+    },
+    {
+      "name": "vggish/fc1/fc1_2/MatMul",
+      "attr": {
+        "use_bias": {
+          "b": true
+        },
+        "units": {
+          "i": "4096"
+        },
+        "_output_shapes": {
+          "list": {
+            "shape": [
+              {
+                "dim": [
+                  {
+                    "size": "-1"
+                  },
+                  {
+                    "size": "4096"
+                  }
+                ]
+              },
+              {
+                "dim": [
+                  {
+                    "size": "-1"
+                  },
+                  {
+                    "size": "4096"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "op": "FullyConnected",
+      "input": [
+        "vggish/fc1/fc1_1/Relu"
+      ]
+    },
+    {
+      "name": "vggish/fc1/fc1_2/Relu",
+      "attr": {
+        "_output_shapes": {
+          "list": {
+            "shape": [
+              {
+                "dim": [
+                  {
+                    "size": "-1"
+                  },
+                  {
+                    "size": "4096"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "op": "Relu",
+      "input": [
+        "vggish/fc1/fc1_2/MatMul"
+      ]
+    },
+    {
+      "name": "vggish/fc2/MatMul",
+      "attr": {
+        "use_bias": {
+          "b": true
+        },
+        "units": {
+          "i": "128"
+        },
+        "_output_shapes": {
+          "list": {
+            "shape": [
+              {
+                "dim": [
+                  {
+                    "size": "-1"
+                  },
+                  {
+                    "size": "128"
+                  }
+                ]
+              },
+              {
+                "dim": [
+                  {
+                    "size": "-1"
+                  },
+                  {
+                    "size": "128"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "op": "FullyConnected",
+      "input": [
+        "vggish/fc1/fc1_2/Relu"
+      ]
+    },
+    {
+      "name": "vggish/fc2/Relu",
+      "attr": {
+        "_output_shapes": {
+          "list": {
+            "shape": [
+              {
+                "dim": [
+                  {
+                    "size": "-1"
+                  },
+                  {
+                    "size": "128"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "op": "Relu",
+      "input": [
+        "vggish/fc2/MatMul"
+      ]
+    },
+    {
+      "name": "MMdnn_Output",
+      "attr": {
+        "_output_shapes": {
+          "list": {
+            "shape": [
+              {
+                "unknown_rank": true
+              }
+            ]
+          }
+        },
+        "axes": {
+          "list": {}
+        }
+      },
+      "op": "Squeeze",
+      "input": [
+        "vggish/fc2/Relu"
+      ]
+    }
+  ]
+}
